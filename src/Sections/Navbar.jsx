@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 
 const navLinks = [
   { label: "Home", type: "scroll", target: "#home", priority: true },
-  { label: "About", type: "scroll", target: "#about", priority: true },
+ 
   { label: "Skills", type: "scroll", target: "#skills", priority: true },
   { label: "Projects", type: "scroll", target: "#projects", priority: true },
+   { label: "About", type: "scroll", target: "#about", priority: true },
   {
     label: "Certificates",
     type: "scroll",

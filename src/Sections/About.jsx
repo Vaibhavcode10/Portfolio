@@ -28,7 +28,7 @@ const useReveal = () => {
     const el = ref.current;
     if (!el) return;
     const obs = new IntersectionObserver(
-      ([e]) => { if (e.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      ([e]) => setVisible(e.isIntersecting),
       { threshold: 0.15 }
     );
     obs.observe(el);

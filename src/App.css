@@ -83,7 +83,7 @@ body::before {
   animation: gridGlitter 6s ease-in-out infinite;
 }
 
-/* Subtle golden radial glow at center */
+/* Subtle cyan radial glow at center */
 body::after {
   content: '';
   position: fixed;

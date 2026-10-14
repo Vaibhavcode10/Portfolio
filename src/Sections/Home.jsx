@@ -180,7 +180,7 @@ const Home = () => {
     <section
       id="home"
       ref={heroRef}
-      className="relative flex min-h-[calc(100vh-2rem)] w-full items-center justify-center overflow-hidden px-4"
+      className="relative flex min-h-[calc(100vh-2rem)] items-center justify-center overflow-hidden px-10"
     >
       {/* Viewport-wide animated background */}
       <div
@@ -242,9 +242,10 @@ const Home = () => {
       </div>
 
       {/* Text Section */}
-      <div className="relative z-10 mt-10 w-full text-center lg:w-1/2 lg:text-left">
+      <div className="relative z-10  text-center lg:w-1/2 lg:text-left"
+      style={{ maxWidth: '50rem', padding: '0 1rem' }}>
         <p className="mb-4 text-sm uppercase tracking-[0.35em] text-amber-300">
-          Welcome hehehe ohKJSKJDKJksjkkjlkjljlkjlkjdl
+          Welcome 
         </p>
 
         <h1 className="mb-6 text-4xl font-semibold leading-tight text-slate-100 sm:text-5xl lg:text-6xl">
@@ -260,8 +261,7 @@ const Home = () => {
 
         <div style={{ display: 'flex', gap: '1rem', marginTop: '2rem', flexWrap: 'wrap' }}>
           {/* View Projects — dark */}
-              {/* Contact Me — gold */}
-          <a href="#contact" style={{
+              <a href="#contact" style={{
             padding: '0.7rem 1.6rem', borderRadius: 8, fontSize: '0.88rem', fontWeight: 500,
             background: '#f2d322', color: '#17130a',
             border: '1px solid #c9a84c', textDecoration: 'none',
