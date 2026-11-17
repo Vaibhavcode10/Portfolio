@@ -1,7 +1,6 @@
 // context/AppContext.jsx
-import { createContext, useContext, useState } from "react";
-
-const AppContext = createContext();
+import { useState } from "react";
+import { AppContext } from './useAppContext';
 
 export function Provider({ children }) {
   const [theme, setTheme] = useState("light");
@@ -19,8 +18,4 @@ export function Provider({ children }) {
       {children}
     </AppContext.Provider>
   );
-}
-
-export function useAppContext() {
-  return useContext(AppContext);
 }

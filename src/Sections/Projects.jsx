@@ -1,3 +1,5 @@
+import usePointerDepth from '../Component/usePointerDepth';
+
 const project = {
   name: 'OS_UI',
   category: 'Web application · In development',
@@ -10,7 +12,9 @@ const project = {
   ],
 };
 
-const Projects = () => (
+const Projects = () => {
+  const cardRef = usePointerDepth();
+  return (
   <section id="projects" className="mx-auto w-full max-w-6xl scroll-mt-24 px-4 py-24 text-slate-100 sm:px-8 lg:px-12">
     <p className="mb-4 text-sm uppercase tracking-[0.35em] text-amber-300">Selected work</p>
     <h2 className="mb-4 text-3xl font-semibold sm:text-4xl">Projects</h2>
@@ -18,7 +22,7 @@ const Projects = () => (
       A selection of things I’m building and the problems behind them.
     </p>
 
-    <article className="overflow-hidden border border-amber-400/20 bg-black/35 shadow-[0_20px_80px_rgba(0,0,0,0.3)] backdrop-blur-xl">
+    <article ref={cardRef} className="project-depth overflow-hidden border border-amber-400/20 bg-black/35 shadow-[0_20px_80px_rgba(0,0,0,0.3)] backdrop-blur-xl">
       <div className="grid gap-0 lg:grid-cols-[0.8fr_1.2fr]">
         <div className="flex min-h-64 flex-col justify-between border-b border-amber-400/15 bg-gradient-to-br from-amber-300/10 via-black/10 to-transparent p-8 lg:border-b-0 lg:border-r">
           <span className="text-xs uppercase tracking-[0.25em] text-amber-200/80">01 / Featured</span>
@@ -42,6 +46,7 @@ const Projects = () => (
       </div>
     </article>
   </section>
-);
+  );
+};
 
 export default Projects;

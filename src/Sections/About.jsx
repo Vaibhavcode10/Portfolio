@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import Reveal from '../Component/Reveal';
 
 const STATS = [
   { value: '3+',   label: 'Years building'   },
@@ -20,38 +20,6 @@ const EDUCATION = [
 ];
 
 // ── hooks ─────────────────────────────────────────────────────────────────────
-
-const useReveal = () => {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([e]) => setVisible(e.isIntersecting),
-      { threshold: 0.15 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-  return [ref, visible];
-};
-
-// ── components ────────────────────────────────────────────────────────────────
-
-const Reveal = ({ children, delay = 0, direction = 'up' }) => {
-  const [ref, visible] = useReveal();
-  const from = { up: 'translateY(28px)', left: 'translateX(-40px)', right: 'translateX(40px)' }[direction];
-  return (
-    <div ref={ref} style={{
-      opacity: visible ? 1 : 0,
-      transform: visible ? 'none' : from,
-      transition: `opacity 0.65s ease ${delay}s, transform 0.65s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
-    }}>
-      {children}
-    </div>
-  );
-};
 
 const GoldLabel = ({ children }) => (
   <p style={{ fontSize: '0.68rem', letterSpacing: '0.28em', textTransform: 'uppercase', color: '#c9a84c', display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '1.25rem' }}>
@@ -81,7 +49,7 @@ const About = () => (
       <Reveal><GoldLabel>About me</GoldLabel></Reveal>
 
       {/* headline + stats | bio */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start', marginBottom: '5rem' }}>
+      <div className="about-grid" style={{ alignItems: 'start', marginBottom: '5rem' }}>
 
         {/* left — headline then stats stacked */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
@@ -120,7 +88,7 @@ const About = () => (
             <div style={{ marginTop: '2rem' }}>
               <GoldLabel>Tech I use</GoldLabel>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.55rem' }}>
-                {STACK.map((tech, i) => (
+                {STACK.map((tech) => (
                   <span
                     key={tech}
                     style={{ border: '1px solid rgba(201,168,76,0.15)', borderRadius: 8, padding: '0.4rem 0.9rem', fontSize: '0.8rem', color: '#fde68a', background: 'rgba(201,168,76,0.05)', letterSpacing: '0.04em', transition: 'border-color 0.2s, background 0.2s', display: 'inline-block', cursor: 'default' }}
@@ -137,7 +105,7 @@ const About = () => (
 
 
       {/* journey + education side by side */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '4rem', alignItems: 'start', marginTop: '1rem' }}>
+      <div className="about-grid" style={{ alignItems: 'start', marginTop: '1rem' }}>
 
         {/* timeline */}
         <div>
@@ -146,7 +114,7 @@ const About = () => (
             <div style={{ position: 'absolute', top: 8, bottom: 8, left: 0, width: 1, background: 'linear-gradient(to bottom, transparent, rgba(201,168,76,0.2) 10%, rgba(201,168,76,0.2) 90%, transparent)' }} />
             {TIMELINE.map((item, i) => (
               <Reveal key={item.year} delay={i * 0.08} direction="left">
-                <div style={{ display: 'flex', gap: '1.25rem', marginBottom: i < TIMELINE.length - 1 ? '2rem' : 0, position: 'relative' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1.25rem', marginBottom: i < TIMELINE.length - 1 ? '2rem' : 0, position: 'relative' }}>
                   <div style={{ position: 'absolute', left: '-2.4rem', top: 6, width: 10, height: 10, borderRadius: '50%', background: '#c9a84c', boxShadow: '0 0 10px rgba(201,168,76,0.5)' }} />
                   <div style={{ fontFamily: "'JetBrains Mono','Fira Code',monospace", fontSize: '0.7rem', color: '#c9a84c', letterSpacing: '0.1em', minWidth: '2.8rem', paddingTop: '0.2rem', flexShrink: 0 }}>{item.year}</div>
                   <GlassCard style={{ flex: 1, padding: '1rem 1.25rem' }}>

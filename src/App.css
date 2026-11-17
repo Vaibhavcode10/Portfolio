@@ -1,3 +1,4 @@
+@layer base {
 * {
   margin: 0;
   padding: 0;
@@ -36,13 +37,15 @@ body,
   background-color: var(--bg);
   color: var(--text-primary);
   font-family: var(--font-sans);
-  font-size: 16px;
+  font-size: inherit;
   line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 html {
+  /* Scale rem-based text, controls, and spacing to the 110% zoom feel. */
+  font-size: 110%;
   scroll-behavior: smooth;
 }
 
@@ -557,4 +560,5 @@ p {
   .container { padding: 0 1.25rem; }
   .navbar-links { display: none; }
   h1 { font-size: 2.2rem; }
+}
 }

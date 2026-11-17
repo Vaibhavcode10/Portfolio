@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const navLinks = [
   { label: "Home", type: "scroll", target: "#home", priority: true },
@@ -17,7 +17,7 @@ const navLinks = [
 
 const scrollToTarget = (target) => {
   const el = document.querySelector(target);
-  el?.scrollIntoView({ behavior: "smooth" });
+  el?.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" : "smooth" });
 };
 
 const Navbar = () => {
@@ -61,21 +61,28 @@ const Navbar = () => {
   const isActive = (item) => activeSection === item.target.slice(1);
 
   const linkClasses = (item) =>
-    `relative px-5 py-1.5 text-lg lg:text-xl font-medium tracking-[0.2em] transition-all duration-500 ${
+    `relative px-3 py-2 text-sm font-medium tracking-[0.1em] transition-all duration-500 ${
       isActive(item)
         ? "text-amber-300"
         : "text-slate-300 hover:text-amber-300"
     }`;
 
   return (
-    <header className="fixed left-1/2 top-2 z-50 w-[92%] max-w-6xl -translate-x-1/2">
+    <header onKeyDown={(event) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        event.currentTarget.querySelector('[aria-controls="mobile-navigation"]')?.focus();
+      }
+    }} className="fixed left-1/2 top-2 z-50 w-[92%] max-w-6xl -translate-x-1/2">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute -top-6 left-1/2 z-0 h-20 w-screen -translate-x-1/2 bg-black/20 backdrop-blur-md"
       />
       <div className="relative z-10 flex items-center justify-between px-3 py-1 sm:px-5">
         {/* Floating Logo */}
-        <div
+        <button
+          type="button"
+          aria-label="Go to home"
           onClick={() => handleNavigation(navLinks[0])}
           className="translate-y-1 cursor-pointer select-none text-3xl sm:text-4xl text-amber-300 transition-all duration-500 hover:scale-105 hover:text-amber-200"
           style={{
@@ -85,10 +92,10 @@ const Navbar = () => {
           }}
         >
           Vaibhav
-        </div>
+        </button>
 
         {/* Desktop Navigation */}
-        <nav className="hidden flex-1 items-center justify-center gap-6 lg:gap-10 xl:gap-14 md:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-1 xl:gap-3 lg:flex">
           {navLinks.map((item) => {
             const button = (
               <button
@@ -106,21 +113,17 @@ const Navbar = () => {
               </button>
             );
 
-            return item.priority ? (
-              button
-            ) : (
-              <div key={item.label} className="hidden xl:block">
-                {button}
-              </div>
-            );
+            return button;
           })}
         </nav>
 
         {/* Mobile Toggle */}
          <button
-          className="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center text-amber-300 transition-all duration-300 hover:scale-110 hover:text-amber-200 md:hidden"
+          className="inline-flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center text-amber-300 transition-all duration-300 hover:scale-110 hover:text-amber-200 lg:hidden"
           onClick={() => setOpen(!open)}
           aria-label="Toggle navigation"
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
         >
           <svg
             viewBox="0 0 24 24"
@@ -142,7 +145,9 @@ const Navbar = () => {
 
       {/* Floating Mobile Menu */}
       <div
-        className={`overflow-hidden transition-all duration-500 md:hidden ${
+        id="mobile-navigation"
+        inert={!open}
+        className={`overflow-hidden transition-all duration-500 lg:hidden ${
           open ? "max-h-[500px] opacity-100 mt-5" : "max-h-0 opacity-0"
         }`}
       >

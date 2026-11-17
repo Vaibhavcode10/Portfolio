@@ -1,4 +1,4 @@
-import React from 'react';
+import Reveal from '../Component/Reveal';
 import Navbar from './Navbar';
 import Home from './Home';
 import RobotBuddy from './RobotBuddy';
@@ -14,11 +14,11 @@ const Manager = () => {
       <Navbar />
       <Home />
       <RobotBuddy />
-      <Skills />
-       <Projects />
+      <Reveal><Skills /></Reveal>
+      <Reveal><Projects /></Reveal>
       <About />
-      <Certificates />
-      <Contact />
+      <Reveal><Certificates /></Reveal>
+      <Reveal><Contact /></Reveal>
     </div>
   );
 };
