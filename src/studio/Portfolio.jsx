@@ -3,6 +3,7 @@ import Reveal from '../Component/Reveal';
 import usePointerDepth from '../Component/usePointerDepth';
 import portrait from '../assets/Profile.png';
 import AntiPaperLeak from './AntiPaperLeak';
+import HeadlineTransfer from './HeadlineTransfer';
 import './studio.css';
 import './electric.css';
 import './education.css';
@@ -23,7 +24,7 @@ function Hero() {
   const portraitRef = usePointerDepth(7);
   return <section id="home" className="studio-hero">
     <div className="hero-topline"><span><i className="status-light" /> AVAILABLE FOR OPPORTUNITIES</span><span>FRONTEND DEVELOPER / CREATIVE THINKER</span></div>
-    <div className="studio-hero-grid"><div className="studio-hero-copy"><p className="kicker">HELLO, I’M VAIBHAV</p><h1>Code with<br /><em>character.</em></h1><p className="hero-intro">I turn complex ideas into expressive,<br className="desktop-break" /> intuitive digital experiences.</p><a className="pill primary" href="#work">Explore my work <Arrow /></a><div className="hero-footnote"><span className="tiny-cross">✳</span><span>ENGINEERING THE DETAILS.<br />DESIGNING THE FEELING.</span></div></div>
+    <div className="studio-hero-grid"><div className="studio-hero-copy"><p className="kicker">HELLO, I’M VAIBHAV</p><h1>Code with<br /><em data-headline-origin>character.</em></h1><p className="hero-intro">I turn complex ideas into expressive,<br className="desktop-break" /> intuitive digital experiences.</p><a className="pill primary" href="#work">Explore my work <Arrow /></a><div className="hero-footnote"><span className="tiny-cross">✳</span><span>ENGINEERING THE DETAILS.<br />DESIGNING THE FEELING.</span></div></div>
     <div className="home-portrait" ref={portraitRef}>
       <div className="home-portrait-backdrop" aria-hidden="true" />
       <div className="home-portrait-frame">
@@ -86,11 +87,9 @@ function Work() {
 
   return (
     <section id="work" className="studio-section">
-      <Reveal>
-        <SectionTitle number="01" label="SELECTED WORK" note="An idea becomes meaningful when you can interact with it.">
-          Built to be <em>used.</em><br />Designed to be felt.
-        </SectionTitle>
-      </Reveal>
+      <SectionTitle number="01" label="SELECTED WORK" note="An idea becomes meaningful when you can interact with it.">
+        Built to be <em>used.</em><br />Designed with <em data-headline-destination>character.</em>
+      </SectionTitle>
       <Reveal>
         <div className="project-marker"><span># PROJECT 01</span><strong>ANTI PAPER LEAK</strong></div>
         <AntiPaperLeak />
@@ -176,7 +175,7 @@ function Contact() {
 
 function ManifestoBand() {
   return (
-    <div className="manifesto-band">
+    <div className="manifesto-band" data-headline-banner>
       <p className="sr-only">Think deeply. Build thoughtfully. Make it matter. Create with purpose.</p>
       <div className="manifesto-track" aria-hidden="true">
         {[0, 1].map(group => (
@@ -200,5 +199,5 @@ export default function Portfolio() {
     addEventListener('scroll',update,{passive:true}); update();
     return ()=>{removeEventListener('scroll',update);cancelAnimationFrame(frame);};
   }, []);
-  return <div className={`studio ${paused?'motion-paused':''}`} ref={root}><a href="#main" className="skip-link">Skip to content</a><div className="reading-progress"/><Nav paused={paused} setPaused={setPaused}/><main id="main"><Hero/><ManifestoBand/><Work/><Playground paused={paused}/><Expertise/><About/><Learning/><Contact/></main><footer className="studio-footer"><a href="#home" className="footer-name">VAIBHAV<span>↗</span></a><div><span>© {new Date().getFullYear()} Vaibhav</span><span>DESIGNED WITH INTENT. BUILT WITH REACT.</span><a href="#home">BACK TO TOP ↑</a></div></footer></div>;
+  return <div className={`studio ${paused?'motion-paused':''}`} ref={root}><a href="#main" className="skip-link">Skip to content</a><div className="reading-progress"/><Nav paused={paused} setPaused={setPaused}/><main id="main" className="portfolio-main"><Hero/><ManifestoBand/><Work/><Playground paused={paused}/><Expertise/><About/><Learning/><Contact/><HeadlineTransfer paused={paused}/></main><footer className="studio-footer"><a href="#home" className="footer-name">VAIBHAV<span>↗</span></a><div><span>© {new Date().getFullYear()} Vaibhav</span><span>DESIGNED WITH INTENT. BUILT WITH REACT.</span><a href="#home">BACK TO TOP ↑</a></div></footer></div>;
 }

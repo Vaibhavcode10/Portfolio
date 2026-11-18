@@ -1,0 +1,46 @@
+.portfolio-main { position: relative; }
+
+[data-headline-origin], [data-headline-destination] {
+  display: inline-block;
+  line-height: 1;
+  letter-spacing: -.065em;
+}
+
+.portfolio-main[data-headline-phase='ready'] [data-headline-destination],
+.portfolio-main[data-headline-phase='flying'] :is([data-headline-origin], [data-headline-destination]),
+.portfolio-main[data-headline-phase='landed'] [data-headline-origin] {
+  background: none;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #b29ac680;
+  animation: none;
+}
+
+.headline-in-flight {
+  position: absolute;
+  z-index: 8;
+  inset: 0 auto auto 0;
+  visibility: hidden;
+  white-space: nowrap;
+  transform-origin: 0 0;
+  color: #e9ff9a;
+  pointer-events: none;
+  user-select: none;
+}
+
+.portfolio-main[data-headline-phase='flying'] .headline-in-flight {
+  visibility: visible;
+  will-change: transform;
+  text-shadow:
+    0 0 25px rgb(213 255 53 / var(--headline-glow, 0)),
+    -3px 2px 0 rgb(255 104 206 / var(--headline-glow, 0)),
+    3px -2px 0 rgb(181 143 255 / var(--headline-glow, 0));
+}
+
+[data-headline-banner][data-headline-impact] {
+  mask-image: radial-gradient(
+    ellipse var(--headline-cut-width) var(--headline-cut-height) at var(--headline-cut-x) var(--headline-cut-y),
+    rgb(0 0 0 / calc(1 - var(--headline-cut-strength))) 48%,
+    #000 100%
+  );
+}
