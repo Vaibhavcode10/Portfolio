@@ -174,6 +174,23 @@ function Contact() {
   return <section id="contact" className="studio-section contact-section"><div className="contact-glow" aria-hidden="true"/><Reveal><p className="kicker"><i className="status-light" /> OPEN TO THE RIGHT OPPORTUNITY</p><h2>Have something<br />in <em>mind?</em><span className="contact-star" aria-hidden="true">✳</span></h2><div className="contact-bottom"><div><p>A role, a collaboration, or an idea<br />that deserves to exist.</p><a className="contact-email" href="mailto:vaibhavhoke.dev@gmail.com">vaibhavhoke.dev@gmail.com <Arrow /></a></div><div className="contact-note"><label htmlFor="brief">Tell me what you’re thinking</label><textarea id="brief" value={message} onChange={e=>{setMessage(e.target.value);setCopied(false);}} placeholder="I’m thinking about building…" rows={3}/><div className="contact-buttons"><a className="pill primary" href={`mailto:vaibhavhoke.dev@gmail.com?subject=${encodeURIComponent('Let’s build something together')}&body=${encodeURIComponent(message)}`}>Let’s talk <Arrow /></a><button className="copy-note" onClick={copyBrief} disabled={!message.trim()}>{copied?'Copied ✓':'Copy note'}</button></div><small>Opens your email app with your note ready to send.</small><span role="status" className="sr-only">{copied?'Your note was copied.':''}</span></div></div></Reveal></section>;
 }
 
+function ManifestoBand() {
+  return (
+    <div className="manifesto-band">
+      <p className="sr-only">Think deeply. Build thoughtfully. Make it matter.</p>
+      <div className="manifesto-track" aria-hidden="true">
+        {[0, 1].map(group => (
+          <div className="manifesto-group" key={group}>
+            {[0, 1, 2].map(copy => (
+              <span key={copy}>THINK DEEPLY <b>✳</b> BUILD THOUGHTFULLY <b>✳</b> MAKE IT MATTER <b>✳</b></span>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function Portfolio() {
   const [paused, setPaused] = useState(false);
   const root = useRef(null);
@@ -183,5 +200,5 @@ export default function Portfolio() {
     addEventListener('scroll',update,{passive:true}); update();
     return ()=>{removeEventListener('scroll',update);cancelAnimationFrame(frame);};
   }, []);
-  return <div className={`studio ${paused?'motion-paused':''}`} ref={root}><a href="#main" className="skip-link">Skip to content</a><div className="reading-progress"/><Nav paused={paused} setPaused={setPaused}/><main id="main"><Hero/><div className="manifesto-band" aria-hidden="true"><div>{[0,1].map(i=><span key={i}>THINK DEEPLY <b>✳</b> BUILD THOUGHTFULLY <b>✳</b> MAKE IT MATTER <b>✳</b> </span>)}</div></div><Work/><Playground paused={paused}/><Expertise/><About/><Learning/><Contact/></main><footer className="studio-footer"><a href="#home" className="footer-name">VAIBHAV<span>↗</span></a><div><span>© {new Date().getFullYear()} Vaibhav</span><span>DESIGNED WITH INTENT. BUILT WITH REACT.</span><a href="#home">BACK TO TOP ↑</a></div></footer></div>;
+  return <div className={`studio ${paused?'motion-paused':''}`} ref={root}><a href="#main" className="skip-link">Skip to content</a><div className="reading-progress"/><Nav paused={paused} setPaused={setPaused}/><main id="main"><Hero/><ManifestoBand/><Work/><Playground paused={paused}/><Expertise/><About/><Learning/><Contact/></main><footer className="studio-footer"><a href="#home" className="footer-name">VAIBHAV<span>↗</span></a><div><span>© {new Date().getFullYear()} Vaibhav</span><span>DESIGNED WITH INTENT. BUILT WITH REACT.</span><a href="#home">BACK TO TOP ↑</a></div></footer></div>;
 }

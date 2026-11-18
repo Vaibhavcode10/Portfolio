@@ -82,6 +82,9 @@ button:focus-visible, a:focus-visible, textarea:focus-visible, input:focus-visib
 .tool-strip, .journey article { border-color: #a17cb54d; }
 .tool-strip i { color: #f151b1; }
 .tool-strip > span, .card-index { color: #b19ac8; }
+.tool-strip > span {
+  font-size: 12px;
+}
 .portrait-backplate { background: linear-gradient(140deg, #8526f5, #c12bb4 60%, #ff459e); box-shadow: 0 20px 70px #891cbb2a; }
 .portrait-type { color: #f4d6ff55; }
 .portrait-stamp { background: #d5ff35; color: #253300; }
