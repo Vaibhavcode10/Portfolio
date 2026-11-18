@@ -177,12 +177,12 @@ function Contact() {
 function ManifestoBand() {
   return (
     <div className="manifesto-band">
-      <p className="sr-only">Think deeply. Build thoughtfully. Make it matter.</p>
+      <p className="sr-only">Think deeply. Build thoughtfully. Make it matter. Create with purpose.</p>
       <div className="manifesto-track" aria-hidden="true">
         {[0, 1].map(group => (
           <div className="manifesto-group" key={group}>
             {[0, 1, 2].map(copy => (
-              <span key={copy}>THINK DEEPLY <b>✳</b> BUILD THOUGHTFULLY <b>✳</b> MAKE IT MATTER <b>✳</b></span>
+              <span key={copy}>THINK DEEPLY <b>✳</b> BUILD THOUGHTFULLY <b>✳</b> MAKE IT MATTER <b>✳</b> CREATE WITH PURPOSE <b>✳</b></span>
             ))}
           </div>
         ))}

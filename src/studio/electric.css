@@ -173,3 +173,12 @@ button:focus-visible, a:focus-visible, textarea:focus-visible, input:focus-visib
   .model-gallery { grid-template-columns: 1fr; gap: 24px; }
 }
 @media (prefers-reduced-motion:reduce), (hover:none) { .home-portrait-frame { transform: none; } }
+
+/* Keep the manifesto marquee moving even when other site motion is paused. */
+.studio.motion-paused .manifesto-track { animation-play-state: running !important; }
+@media (prefers-reduced-motion: reduce) {
+  .manifesto-track { width: max-content; min-width: 200%; text-align: initial; }
+  .manifesto-group + .manifesto-group { display: flex; }
+  .manifesto-group > span + span { display: inline; }
+  .manifesto-group > span:first-child { white-space: nowrap; }
+}
