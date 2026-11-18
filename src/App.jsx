@@ -1,11 +1,9 @@
-import Manager from "./Sections/Manager";
-import "./App.css";
-import "./effects.css";
+import Portfolio from './studio/Portfolio';
 
 function App() {
   return (
     <div className="app">
-      <Manager />
+      <Portfolio />
     </div>
   );
 }

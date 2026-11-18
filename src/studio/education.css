@@ -1,0 +1,22 @@
+.hero-name { margin: 20px 0 0; color: #d5ff35; font: 600 clamp(25px, 3vw, 42px)/1 'Space Grotesk', sans-serif; letter-spacing: -.07em; }
+.hero-name span { color: #ff55b7; font-weight: 400; }
+.education-section { background: #15121c; border-block: 1px solid #ffffff12; }
+.education-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 42px; }
+.education-heading h2 { margin-top: 18px; font: 400 clamp(44px, 4.5vw, 70px)/1.05 'Space Grotesk', sans-serif; letter-spacing: -.06em; }
+.education-heading h2 span { color: #d5ff35; }
+.education-heading > p { color: #aaa1b6; font-size: 15px; line-height: 1.7; }
+.qualification-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+.qualification-card { min-height: 360px; display: flex; flex-direction: column; padding: 31px; background: #1c1824; border: 1px solid #ffffff17; border-radius: 8px; }
+.current-qualification { border-top: 2px solid #d5ff35; background: linear-gradient(150deg, #211c2c, #1b1721); }
+.qualification-top { display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+.qualification-top > span:first-child, .qualification-note, .education-practice > span { color: #a79ab2; font: 9px monospace; letter-spacing: .1em; }
+.qualification-status { padding: 6px 10px; color: #d7ff76; background: #d5ff3512; border: 1px solid #d5ff3540; border-radius: 4px; font-size: 11px; white-space: nowrap; }
+.qualification-card h3 { margin: 34px 0 10px; max-width: 16ch; font: 400 clamp(25px, 2.4vw, 35px)/1.16 'Space Grotesk', sans-serif; letter-spacing: -.04em; }
+.qualification-place { color: #dec9f1; font-size: 16px; }
+.qualification-detail { margin-top: 22px; max-width: 47ch; color: #b2a9bb; font-size: 14px; line-height: 1.8; }
+.qualification-rule { flex: 1; min-height: 28px; border-bottom: 1px solid #ffffff14; }
+.qualification-note { margin-top: 17px; color: #c3b5cf; }
+.education-practice { display: grid; grid-template-columns: 1fr 2fr; gap: 30px; margin-top: 32px; padding-top: 24px; border-top: 1px solid #ffffff12; }
+.education-practice p { color: #b2a9bb; font-size: 14px; line-height: 1.8; }
+@media (max-width: 760px) { .hero-name { margin-top: 14px; } .education-heading { display: block; } .education-heading > p { margin-top: 20px; } .qualification-grid { grid-template-columns: 1fr; } .qualification-card { min-height: 320px; padding: 25px; } .education-practice { grid-template-columns: 1fr; gap: 12px; } }
+@media (max-width: 380px) { .qualification-top { align-items: flex-start; flex-direction: column; } }

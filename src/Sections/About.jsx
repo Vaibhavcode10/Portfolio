@@ -134,7 +134,7 @@ const About = () => (
             {EDUCATION.map((edu, i) => (
               <Reveal key={edu.degree} delay={i * 0.1} direction="right">
                 <GlassCard style={{ padding: '1.5rem 1.75rem' }}>
-                  <h3 style={{ fontSize: '1rem', fontWeight: 500, color: '#f0ede6', margin: '0 0 0.4rem' }}>
+                  <h3  style={{ fontSize: '1rem', fontWeight: 500, color: '#f0ede6', margin: '0 0 0.4rem' }}>
                     {edu.degree}
                     {edu.pursuing && <span style={{ marginLeft: '0.5rem', fontSize: '0.62rem', background: 'rgba(201,168,76,0.1)', color: '#c9a84c', borderRadius: 999, padding: '0.15rem 0.55rem', verticalAlign: 'middle' }}>Pursuing</span>}
                   </h3>
